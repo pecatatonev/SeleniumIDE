@@ -26,9 +26,6 @@ jobs:
     - name: Install Google Chrome
       run: sudo apt-get install -y google-chrome-stable
 
-    - name: Install Chrome WebDriver
-      run: sudo apt-get install -y chromedriver
-
     - name: Set ChromeDriver path
       run: echo "CHROMEWEBDRIVER=/usr/bin/" >> $GITHUB_ENV
 
