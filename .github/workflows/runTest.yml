@@ -19,15 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 6.0.x
-        
-    - name: Update apt packages
-      run: sudo apt-get update
-
-    - name: Install Google Chrome
-      run: sudo apt-get install -y google-chrome-stable
-
-    - name: Set ChromeDriver path
-      run: echo "CHROMEWEBDRIVER=/usr/bin/" >> $GITHUB_ENV
 
     - name: Install dependencies
       run: dotnet restore
@@ -36,6 +27,4 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Run UI Tests
-      env:
-        CHROMEWEBDRIVER: /usr/bin/google-chrome
       run: dotnet test --verbosity normal
