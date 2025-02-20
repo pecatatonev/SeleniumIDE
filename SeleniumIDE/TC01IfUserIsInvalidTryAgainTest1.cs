@@ -17,18 +17,15 @@ public class TC01IfUserIsInvalidTryAgainTest
     private IWebDriver driver;
     public IDictionary<string, object> vars { get; private set; }
     private IJavaScriptExecutor js;
+    private ChromeOptions chromeOptions;
 
     [SetUp]
     public void SetUp()
     {
-        ChromeOptions options = new ChromeOptions();
-        options.AddArguments("headless");
-        options.AddArgument("no-sandbox");
-        options.AddArgument("disable-dev-shm-usage");
-        options.AddArgument("disable-gpu");
-        options.AddArgument("window-size=1920x1080");
+        chromeOptions = new ChromeOptions();
+        chromeOptions.AddArgument("headless");  // Run in headless mode (important for CI/CD)
 
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(chromeOptions);
         js = (IJavaScriptExecutor)driver;
         vars = new Dictionary<string, object>();
     }
@@ -37,6 +34,7 @@ public class TC01IfUserIsInvalidTryAgainTest
     protected void TearDown()
     {
         driver.Quit();
+        driver.Dispose();
     }
 
     [Test]
