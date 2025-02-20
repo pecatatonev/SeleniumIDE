@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
@@ -28,5 +28,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Run Tests
       env:
-        CHROMEWEBDRIVE: /usr/bin/google-chrome
+        CHROMEWEBDRIVER: /usr/bin/google-chrome
       run: dotnet test --verbosity normal
